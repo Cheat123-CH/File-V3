@@ -3,7 +3,7 @@
     "version": "3.0.0",
     "author": "Yim Klok",
     "license": "CamCyber",
-    "description": "It the small path of one stop file service",
+    "description": "One Stop Service File",
     "scripts": {
         "start:dev": "nodemon",
         "start:prod": "ts-node ./src/main.ts",
