@@ -1,11 +1,11 @@
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import express, { Application } from 'express';
+import path from 'path';
 import { Sequelize } from 'sequelize-typescript';
 import DatabaseConfig from './configs/db.config';
-import bodyParser from 'body-parser';
-import path from 'path';
-import cors from 'cors';
-import routers from './routers';
 import NotFoundException from './exceptions/not-found';
+import routers from './routers';
 import ErrorsFilter from './shared/exceptions';
 
 const app: Application = express();
@@ -31,7 +31,7 @@ app.get('/', (_req, res) => {
 /**==================================================================
  * @noted Use all routes with prefix service
  */
-app.use('/service', routers);
+app.use('/api', routers);
 
 /**==================================================================
  * @noted Custom Not Found handler for route request

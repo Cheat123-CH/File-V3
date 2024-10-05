@@ -1,9 +1,9 @@
 import { Response } from "express";
 import fs from 'fs-extra';
-import File from "../models/file.model";
 import BadRequestException from "../exceptions/bad-request";
-import sendFileResponse from "../shared/files/send.file";
+import File from "../models/file.model";
 import FilePayload from "../shared/files/payload.interface";
+import sendFileResponse from "../shared/files/send.file";
 
 class FileService {
 
@@ -30,7 +30,7 @@ class FileService {
 
     public upload = async (file: FilePayload) => {
         try {
-            const uri: string = `service/file/${file.filename}`;
+            const uri: string = `api/file/${file.filename}`;
             const fileCreate = await File.create({
                 filename: file.filename,
                 originalname: file.originalname,
