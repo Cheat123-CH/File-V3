@@ -5,10 +5,10 @@
     "license": "CamCyber",
     "description": "One Stop Service File",
     "scripts": {
-        "start": "node dist/main.js",
-        "start:dev": "nest start --watch",
-        "start:prod": "node dist/main.js",
-        "build": "nest build",
+        "start:dev": "nodemon",
+        "start:prod": "ts-node ./src/main.ts",
+        "preview": "ts-node dist/main.js",
+        "build": "tsc",
         "migrate": "ts-node src/database/file.migrate.ts"
     },
     "dependencies": {
