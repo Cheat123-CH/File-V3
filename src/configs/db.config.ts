@@ -5,22 +5,29 @@ dotenv.config();
 class DatabaseConfig {
     static getSequelizeConfig(): SequelizeOptions {
 
-        const dbUrl = new URL(process.env.DATABASE_URL!);
+        const databaseUrl = process.env.DATABASE_URL;
+
+        // ✅ Guard — catch undefined before parsing
+        if (!databaseUrl) {
+            throw new Error('DATABASE_URL environment variable is not set');
+        }
+
+        const dbUrl = new URL(databaseUrl);
 
         return {
-            dialect: 'postgres',
+            dialect : 'postgres',
             host    : dbUrl.hostname,
             port    : Number(dbUrl.port) || 5432,
-            database: dbUrl.pathname.replace('/', ''),  // removes leading "/"
+            database: dbUrl.pathname.replace('/', ''),
             username: dbUrl.username,
             password: dbUrl.password,
             dialectOptions: {
                 ssl: {
                     require           : true,
-                    rejectUnauthorized: false  // ✅ Required for Render PostgreSQL
+                    rejectUnauthorized: false
                 }
             },
-            models : [__dirname + '/../**/*.model.js'],  // ✅ .js not .ts in prod
+            models : [__dirname + '/../**/*.model.js'],
             logging: false,
         };
     }
