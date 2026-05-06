@@ -8,7 +8,7 @@ const migrate = async () => {
     try {
         await sequelize.authenticate();
         await sequelize.sync({ force: true });
-        console.log('Migrations have been recreate successfully.'.green);
+        console.log('Migrations have been recreate successfully !.'.green);
         process.exit(0);
     } catch (error) {
         console.log(((error as Error).message).red);

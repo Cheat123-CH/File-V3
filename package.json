@@ -5,11 +5,10 @@
     "license": "CamCyber",
     "description": "One Stop Service File",
     "scripts": {
-        "start:dev": "nodemon",
-        "start:prod": "ts-node ./src/main.ts",
-        "preview": "ts-node dist/main.js",
-        "build": "tsc",
-        "migrate": "ts-node src/database/file.migrate.ts"
+        "start:dev" : "nodemon",
+        "start:prod": "node dist/main.js",  
+        "migrate"   : "ts-node -r tsconfig-paths/register src/database/file.migrate.ts",
+        "seed"      : "ts-node -r tsconfig-paths/register src/database/seed.ts"
     },
     "dependencies": {
         "@types/cors": "^2.8.17",

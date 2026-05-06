@@ -1,37 +1,28 @@
-import { Dialect } from "sequelize";
-import dotenv from 'dotenv';
-import { DatabaseEnum } from "../shared/enums/database.enum";
+import { SequelizeOptions } from 'sequelize-typescript';
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 class DatabaseConfig {
-    private static commonConfig = {
-        host:     process.env.DB_HOST,
-        port:     Number(process.env.DB_PORT) || 5432,
-        username: process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_DATABASE,
-        models: [__dirname + '/../models/**/*.model.{ts,js}'],
-        logging: false,
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false
-            }
-        }
-    };
+    static getSequelizeConfig(): SequelizeOptions {
 
-    public static getSequelizeConfig() {
-        const dialect = (process.env.DB_CONNECTION as Dialect) || 'postgres';
-        switch (dialect) {
-            case DatabaseEnum.MYSQL:
-            case DatabaseEnum.POSTGRES:
-                return {
-                    ...DatabaseConfig.commonConfig,
-                    dialect
-                };
-            default:
-                throw new Error('Invalid or unsupported database dialect');
-        }
+        const dbUrl = new URL(process.env.DATABASE_URL!);
+
+        return {
+            dialect: 'postgres',
+            host    : dbUrl.hostname,
+            port    : Number(dbUrl.port) || 5432,
+            database: dbUrl.pathname.replace('/', ''),  // removes leading "/"
+            username: dbUrl.username,
+            password: dbUrl.password,
+            dialectOptions: {
+                ssl: {
+                    require           : true,
+                    rejectUnauthorized: false  // ✅ Required for Render PostgreSQL
+                }
+            },
+            models : [__dirname + '/../**/*.model.js'],  // ✅ .js not .ts in prod
+            logging: false,
+        };
     }
 }
 

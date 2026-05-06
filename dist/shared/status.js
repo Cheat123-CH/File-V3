@@ -1,0 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HttpStatus = void 0;
+var HttpStatus;
+(function (HttpStatus) {
+    HttpStatus[HttpStatus["OK"] = 200] = "OK";
+    HttpStatus[HttpStatus["BAD_REQUEST"] = 400] = "BAD_REQUEST";
+    HttpStatus[HttpStatus["UNAUTHORIZED"] = 401] = "UNAUTHORIZED";
+    HttpStatus[HttpStatus["FORBIDDEN"] = 403] = "FORBIDDEN";
+    HttpStatus[HttpStatus["NOT_FOUND"] = 404] = "NOT_FOUND";
+    HttpStatus[HttpStatus["METHOD_NOT_ALLOWED"] = 405] = "METHOD_NOT_ALLOWED";
+    HttpStatus[HttpStatus["NOT_ACCEPTABLE"] = 406] = "NOT_ACCEPTABLE";
+    HttpStatus[HttpStatus["REQUEST_TIMEOUT"] = 408] = "REQUEST_TIMEOUT";
+    HttpStatus[HttpStatus["CONFLICT"] = 409] = "CONFLICT";
+    HttpStatus[HttpStatus["UNPROCESSABLE_ENTITY"] = 422] = "UNPROCESSABLE_ENTITY";
+    HttpStatus[HttpStatus["TOO_MANY_REQUESTS"] = 429] = "TOO_MANY_REQUESTS";
+    HttpStatus[HttpStatus["INTERNAL_SERVER_ERROR"] = 500] = "INTERNAL_SERVER_ERROR";
+    HttpStatus[HttpStatus["NOT_IMPLEMENTED"] = 501] = "NOT_IMPLEMENTED";
+    HttpStatus[HttpStatus["BAD_GATEWAY"] = 502] = "BAD_GATEWAY";
+    HttpStatus[HttpStatus["GATEWAY_TIMEOUT"] = 504] = "GATEWAY_TIMEOUT";
+})(HttpStatus || (exports.HttpStatus = HttpStatus = {}));
