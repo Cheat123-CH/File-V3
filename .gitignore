@@ -8,7 +8,7 @@ node_modules
 public/uploads/*
 
 # Ignore File
-package-lock.json
+# package-lock.json
 
 # IDE - VSCode
 .vscode/*
