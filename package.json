@@ -5,11 +5,11 @@
     "license": "CamCyber",
     "description": "One Stop Service File",
     "scripts": {
-        "start:dev" : "nodemon",
-        "start:prod": "node -r tsconfig-paths/register dist/main.js",
+        "start:dev": "nodemon",
+        "start:prod": "node dist/main.js",
         "build:prod": "tsc && cp -r src/view dist/view && cp -r public dist/public",
-        "migrate"   : "ts-node -r tsconfig-paths/register src/database/file.migrate.ts",
-        "seed"      : "ts-node -r tsconfig-paths/register src/database/seed.ts"
+        "migrate": "ts-node -r tsconfig-paths/register src/database/file.migrate.ts",
+        "seed": "ts-node -r tsconfig-paths/register src/database/seed.ts"
     },
     "dependencies": {
         "@types/cors": "^2.8.17",
@@ -29,6 +29,7 @@
         "pg": "^8.11.3",
         "sequelize": "^6.37.1",
         "sequelize-typescript": "^2.1.6",
+        "tsc-alias": "^1.8.17",
         "uuid": "^9.0.1"
     },
     "devDependencies": {
