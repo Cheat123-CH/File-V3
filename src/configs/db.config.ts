@@ -1,5 +1,6 @@
 import { SequelizeOptions } from 'sequelize-typescript';
 import * as dotenv from 'dotenv';
+import path from 'path';
 dotenv.config();
 
 class DatabaseConfig {
@@ -7,7 +8,6 @@ class DatabaseConfig {
 
         const databaseUrl = process.env.DATABASE_URL;
 
-        // ✅ Guard — catch undefined before parsing
         if (!databaseUrl) {
             throw new Error('DATABASE_URL environment variable is not set');
         }
@@ -24,10 +24,11 @@ class DatabaseConfig {
             dialectOptions: {
                 ssl: {
                     require           : true,
-                    rejectUnauthorized: false
+                    rejectUnauthorized: false  
                 }
             },
-            models : [__dirname + '/../**/*.model.js'],
+            // ✅ Fix model path — works in both dev and prod
+            models : [path.join(__dirname, '..', '**', '*.model.js')],
             logging: false,
         };
     }
