@@ -6,7 +6,8 @@
     "description": "One Stop Service File",
     "scripts": {
         "start:dev" : "nodemon",
-        "start:prod": "node dist/main.js",  
+        "start:prod": "node dist/main.js",
+        "build:prod": "tsc",
         "migrate"   : "ts-node -r tsconfig-paths/register src/database/file.migrate.ts",
         "seed"      : "ts-node -r tsconfig-paths/register src/database/seed.ts"
     },
