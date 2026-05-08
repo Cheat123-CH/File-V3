@@ -18,7 +18,7 @@ app.set('views', path.join(__dirname, 'view'));
 
 app.use(bodyParser.json({ limit: '500mb' }));
 app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, '..', 'public', 'static')));
 app.use(express.json());
 app.use(cors());
 
